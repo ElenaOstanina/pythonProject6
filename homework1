@@ -1,0 +1,70 @@
+class Animal:
+    def __init__(self, name):
+        self.name = name
+        self.alive = True
+        self.fed = False
+
+class Plant:
+    def __init__(self, name):
+        self.name = name
+        self.edible = False
+
+
+class Mammal(Animal):
+    print("Я млекопитающее")
+    def eat(self, food):
+        if food.edible == False:
+            self.alive = False
+            print(f'{self.name} не съел {food.name}')
+        else:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True
+            self.alive = True
+
+class Predator(Animal):
+    print("Я хищник")
+
+    def eat(self, food):
+        if food.edible == False:
+            self.alive = False
+            print(f'{self.name} не съел {food.name}')
+        else:
+            print(f'{self.name} съел {food.name}')
+            self.fed = True
+            self.alive = True
+
+class Flower(Plant):
+    print("Я цветок")
+
+class Fruit(Plant):
+    print("Я фрукт")
+    def __init__(self,name):
+        self.name = name
+        self.edible = True
+
+
+animal1 = Mammal("Хатико")
+print(animal1.name)
+
+animal2 = Predator("Волк с Уолл-Стрит")
+print(animal2.name)
+
+plant1 = Flower("Цветик-семицветик")
+print(plant1.name)
+
+plant2 = Fruit("Заводной апельсин")
+print(plant2.name)
+
+animal1.eat(plant1)
+print(animal1.alive)
+print(animal1.fed)
+animal1.eat(plant2)
+print(animal1.alive)
+print(animal1.fed)
+
+animal2.eat(plant1)
+print(animal2.alive)
+print(animal2.fed)
+animal2.eat(plant2)
+print(animal2.alive)
+print(animal2.fed)
